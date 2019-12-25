@@ -4,6 +4,8 @@ Django Antimat
 About
 -----
 
+Only for Python >=3.4 version. For use old Pyhton version install from [original][1] repository.
+
 Detect dirty slang in russian text and process it.
 
 Конечно же, бороться с русской ненормативной лексикой очень сложно
@@ -34,7 +36,7 @@ Installation
 ------------
 
 ```bash
-$ pip install djantimat
+$ pip install git+git://github.com/arsensokolov/djantimat.git#egg=djantimat
 ```
 
 Добавление модуля в джанго:
@@ -44,7 +46,7 @@ INSTALLED_APPS += ('djantimat',)
 синхронизация модели:
 ```bash
 $ python manage.py migrate
-$ python manage.py syndb # для добавления существующей базы слов
+$ python manage.py loaddata --app djantimat initial_data # для добавления существующей базы слов
 ```
 
 Dependencies
@@ -94,3 +96,5 @@ $ python
 ```python
 >>> without_slang = RegexpProc.wrap(u'Здесь текст с матерками', wrap=('<pre>', '</pre>',))
 ```
+
+[1]: (https://github.com/PixxxeL/djantimat)
