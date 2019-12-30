@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import re
-
 import pymorphy2
 
 from .models import Slang
@@ -29,7 +28,7 @@ class PymorphyProc(object):
     def wrap(text, wrap=('<span style="color:red;">', '</span>',)):
         words = {}
         for word in PymorphyProc._gen(text):
-            words[word] = u'%s%s%s' % (wrap[0], word, wrap[1],)
+            words[word] = '%s%s%s' % (wrap[0], word, wrap[1],)
         for word, wrapped in words.items():
             text = text.replace(word, wrapped)
         return text
@@ -107,7 +106,7 @@ class RegexpProc(object):
             if len(word) < 3:
                 continue
             if RegexpProc.regexp.findall(word):
-                words[word] = u'%s%s%s' % (wrap[0], word, wrap[1],)
+                words[word] = '%s%s%s' % (wrap[0], word, wrap[1],)
         for word, wrapped in words.items():
             text = text.replace(word, wrapped)
         return text

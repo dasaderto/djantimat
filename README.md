@@ -60,19 +60,19 @@ Pymorph2 Method Usage
 $ python manage.py shell
 ```
 ```python
->>> from djantimat.helpers import PymorphyProc
+from djantimat.helpers import PymorphyProc
 ```
 Есть ли матерные слова в тексте:
 ```python
->>> slang_detected = PymorphyProc.test(u'Здесь текст с матерками')
+slang_detected = PymorphyProc.test('Здесь текст с матерками')
 ```
 Замена матерных слов в тексте шаблоном:
 ```python
->>> without_slang = PymorphyProc.replace(u'Здесь текст с матерками', repl='[xxx]')
+without_slang = PymorphyProc.replace('Здесь текст с матерками', repl='[xxx]')
 ```
 Оборачивание матерных слов в тексте например тегом:
 ```python
->>> without_slang = PymorphyProc.wrap(u'Здесь текст с матерками', wrap=('<pre>', '</pre>',))
+without_slang = PymorphyProc.wrap('Здесь текст с матерками', wrap=('<pre>', '</pre>',))
 ```
 
 Regexp Method Usage
@@ -82,19 +82,19 @@ Regexp Method Usage
 $ python
 ```
 ```python
->>> from djantimat.helpers import RegexpProc
+from djantimat.helpers import RegexpProc
 ```
 Есть ли матерные слова в тексте:
 ```python
->>> slang_detected = RegexpProc.test(u'Здесь текст с матерками')
+slang_detected = RegexpProc.test('Здесь текст с матерками')
 ```
 Замена матерных слов в тексте шаблоном:
 ```python
->>> without_slang = RegexpProc.replace(u'Здесь текст с матерками', repl='[xxx]')
+without_slang = RegexpProc.replace('Здесь текст с матерками', repl='[xxx]')
 ```
 Оборачивание матерных слов в тексте например тегом:
 ```python
->>> without_slang = RegexpProc.wrap(u'Здесь текст с матерками', wrap=('<pre>', '</pre>',))
+without_slang = RegexpProc.wrap('Здесь текст с матерками', wrap=('<pre>', '</pre>',))
 ```
 
 [1]: (https://github.com/PixxxeL/djantimat)
