@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import re
+
 import pymorphy2
 
 from .models import Slang
-
 
 word_pattern = r'[А-яA-z0-9\-]+'
 
@@ -35,13 +35,24 @@ class PymorphyProc(object):
 
     @staticmethod
     def _gen(text):
+        words = PymorphyProc.get_words()
+        data = "".join(re.findall(word_pattern, text))
+        fragments = []
+        for word in words:
+            for part in range(len(data)):
+                fragment = data[part: part + len(word)]
+                fragments.append(fragment)
+
+        print(fragments)
+        """
         for word in re.findall(word_pattern, text):
             if len(word) < 3:
                 continue
             normal_word = PymorphyProc.morph.parse(word.lower())[0].normal_form
-            if normal_word in PymorphyProc.get_words():
-                #print normal_word.encode('1251'), word.encode('1251')
+            if normal_word in words:
+                # print normal_word.encode('1251'), word.encode('1251')
                 yield word
+        """
 
     @staticmethod
     def get_words():
