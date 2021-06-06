@@ -36,7 +36,7 @@ Installation
 ------------
 
 ```bash
-$ pip install git+git://github.com/arsensokolov/djantimat.git#egg=djantimat
+$ pip install git+git://github.com/dasaderto/djantimat.git#egg=djantimat
 ```
 
 Добавление модуля в джанго:
