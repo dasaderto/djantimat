@@ -97,8 +97,6 @@ class PymorphyProc(object):
                 for lt in data:
                     if letter == lt:
                         data = data.replace(lt, key)
-        fragments = []
-        find_words = {}
         for word in words:
             for part in range(len(data)):
                 fragment = data[part: part + len(word)]
