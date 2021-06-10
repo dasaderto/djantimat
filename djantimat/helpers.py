@@ -92,11 +92,11 @@ class PymorphyProc(object):
     def _gen(text):
         words = PymorphyProc.get_words()
         data = "".join(re.findall(word_pattern, text))
-        for key, value in d.items():
-            for letter in value:
-                for lt in data:
-                    if letter == lt:
-                        data = data.replace(lt, key)
+        # for key, value in d.items():
+        #     for letter in value:
+        #         for lt in data:
+        #             if letter == lt:
+        #                 data = data.replace(lt, key)
         for word in words:
             for part in range(len(data)):
                 fragment = data[part: part + len(word)]
