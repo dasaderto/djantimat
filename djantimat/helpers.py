@@ -106,7 +106,6 @@ class PymorphyProc(object):
                     fragment = datum[part: part + len(word)]
                     if (distance(fragment, word) <= len(word) * 0.25) and \
                             (part <= 2 or part+len(word) < len(word)):
-                        print(fragment, word)
                         yield fragment
 
     @staticmethod
