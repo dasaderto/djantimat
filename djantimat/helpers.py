@@ -6,7 +6,7 @@ import pymorphy2
 
 from .models import Slang
 
-word_pattern = r'[А-яA-z0-9\-]+'
+word_pattern = r'[А-яA-z0-9\-\*]+'
 
 
 def distance(a, b):
@@ -91,17 +91,23 @@ class PymorphyProc(object):
     @staticmethod
     def _gen(text):
         words = PymorphyProc.get_words()
-        data = "".join(re.findall(word_pattern, text))
-        # for key, value in d.items():
-        #     for letter in value:
-        #         for lt in data:
-        #             if letter == lt:
-        #                 data = data.replace(lt, key)
-        for word in words:
-            for part in range(len(data)):
-                fragment = data[part: part + len(word)]
-                if distance(fragment, word) <= len(word) * 0.25:
-                    yield fragment
+        data = " ".join(re.findall(word_pattern, text))
+        prepared_data = ""
+        for datum in data.split(" "):
+            if len(datum) > 2:
+                prepared_data += " " + datum + " "
+            else:
+                prepared_data += datum
+        prepared_data = prepared_data.replace("  ", " ")
+        prepared_data = list(filter(lambda x: x, prepared_data.split(" ")))
+        for datum in prepared_data:
+            for word in [word for word in words if len(word) <= len(datum)+2]:
+                for part in range(len(datum)):
+                    fragment = datum[part: part + len(word)]
+                    if (distance(fragment, word) <= len(word) * 0.25) and \
+                            (part <= 2 or part+len(word) < len(word)):
+                        print(fragment, word)
+                        yield fragment
 
     @staticmethod
     def get_words():
